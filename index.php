@@ -10,8 +10,8 @@
 
 <?php 
 
-  require_once('php_partials/menu.php'); 
-  
+  include_once('php_partials/menu.php'); 
+
 ?>
 
 </body>
