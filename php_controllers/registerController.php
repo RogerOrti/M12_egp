@@ -2,12 +2,16 @@
 
 session_start();
 
-
-echo "Hola que tal";
-
 require_once("../php_library/bd.php");
 
-
 if (isset($_POST['registre'])) {
-    # code...
+
+    if ($_POST['contrasenya'] == $_POST['confirmar_contrasenya']) {
+        register_usuari($_POST['nom'], $_POST['contrasenya']);
+        header('Location: login.php');
+    }
+    else {
+        
+    }
+
 }

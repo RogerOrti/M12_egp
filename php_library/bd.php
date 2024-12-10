@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+
+
 function openBD(){
 
     $servername = "localhost";
@@ -20,18 +23,50 @@ function openBD(){
 }
 
 
-
 function register_usuari($nom_usuari, $password){
 
-    $conn = openBD();
+  $conn = openBD();
 
-    $sentencia_text = "INSERT INTO usuaris(nom, contrasenya) VALUES (:nom, :contrasenya)";
-    $sentencia = $conn->prepare($sentencia_text);
-    $sentencia->bindParam(':nom', $nom_usuari);
-    $sentencia->bindParam(':contrasenya', $password);
-    $sentencia->execute();
+    try {
 
+      $password_xifrada = password_hash($password);
+
+      $sentencia_text = "INSERT INTO usuaris(nom, contrasenya) VALUES (:nom, :contrasenya)";
+      $sentencia = $conn->prepare($sentencia_text);
+      $sentencia->bindParam(':nom', $nom_usuari);
+      $sentencia->bindParam(':contrasenya', $password_xifrada);
+      $sentencia->execute();
+
+    }
+    catch (PDOException $e) {
+
+      $_SESSION['error'] = $e->getCode() . ' - ' . $e->getMessage();
+    }
     $conn = null;
+}
 
+
+
+function verificar_usuari($nom_usuari, $password){
+
+  $conn = openBD();
+    try {
+
+      $sentencia_text = "SELECT * FROM usuaris WHERE nom_usuari = :nom";
+      $sentencia = $conn->prepare($sentencia_text);
+      $sentencia->bindParam(':nom', $nom_usuari);
+      $sentencia->execute();
+      $resultat = $sentencia->fetch(PDO::FETCH_ASSOC);
+
+      if ($resultat && password_verify($password, $resultat['contrasenya'])) {
+        
+      }
+
+
+    } catch (PDOException $e) {
+
+  }
+
+  $conn = null;
 
 }
