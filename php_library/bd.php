@@ -2,6 +2,41 @@
 
 session_start();
 
+function errorMessage($e){
+
+  if (!empty($e->errorInfo[1])) {
+
+      switch ($e->errorInfo[1]) {
+          case 1062:
+              $mensaje = "Registre duplicat";
+          break;
+          case 1062:
+              $mensaje = "Registre amb elements relacionats";
+          break;
+          default:
+              $mensaje = $e->errorInfo[1] . ' - ' . $e->errorInfo[2];
+          break;
+      }
+      
+  }
+  else {
+      switch ($e->getCode()) {
+          case '1044':
+              $mensaje = "Usuari i/o password incorrectes";
+          break;
+          case '1049':
+              $mensaje = "Base de dades desconeguda";
+          break;
+          case '2002':
+              $mensaje = "Registre amb elements relacionats";
+          break;
+          
+          default:
+              $mensaje = $e->errorInfo[1] . ' - ' . $e->getMessage()
+          break;
+      }
+  }
+}
 
 function openBD(){
 
@@ -37,6 +72,7 @@ function register_usuari($nom_usuari, $password){
       $sentencia->bindParam(':contrasenya', $password_xifrada);
       $sentencia->execute();
 
+      $_SESSION['missatge'] = 'Registre afegit corrctament';
     }
     catch (PDOException $e) {
 

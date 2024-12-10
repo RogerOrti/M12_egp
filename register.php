@@ -22,6 +22,15 @@ session_start();
     ?>
   <div class="container mt-5">
     <h2 class="text-center">Registre</h2>
+
+    <?php
+    
+      include_once('php_partial/missatges.php');
+    
+    
+    ?>
+
+
     <form class="mx-auto" style="max-width: 400px;" action="php_controllers/registerController.php" method="POST">
       <!-- Camp Nom -->
       <div class="mb-3">
