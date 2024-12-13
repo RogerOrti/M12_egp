@@ -1,8 +1,4 @@
-<?php 
 
-session_start();
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +21,7 @@ session_start();
 
     <?php
     
-      include_once('php_partial/missatges.php');
+      include_once('php_partials/missatges.php');
     
     
     ?>
