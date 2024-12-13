@@ -11,11 +11,11 @@ if (isset($_POST['registre'])) {
 
         if (isset($_SESSION['error'])) {
 
-            header('Location: register.php');
+            header('Location: ../register.php');
             exit();
         }
 
-        header('Location: login.php');
+        header('Location: ../login.php');
     }
     else {
         

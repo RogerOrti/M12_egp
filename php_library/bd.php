@@ -32,7 +32,7 @@ function errorMessage($e){
           break;
           
           default:
-              $mensaje = $e->errorInfo[1] . ' - ' . $e->getMessage()
+              $mensaje = $e->errorInfo[1] . ' - ' . $e->getMessage();
           break;
       }
   }
@@ -64,7 +64,7 @@ function register_usuari($nom_usuari, $password){
 
     try {
 
-      $password_xifrada = password_hash($password);
+      $password_xifrada = password_hash($password, PASSWORD_DEFAULT);
 
       $sentencia_text = "INSERT INTO usuaris(nom, contrasenya) VALUES (:nom, :contrasenya)";
       $sentencia = $conn->prepare($sentencia_text);
