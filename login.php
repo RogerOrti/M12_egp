@@ -1,5 +1,3 @@
-<?php ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +8,11 @@
 </head>
 <body>
     <?php 
-
         include_once('php_partials/menu.php');  
-
     ?>
-
     <div class="container mt-5">
         <h2 class="text-center">Inici sessió</h2>
+        
         <form class="mx-auto" style="max-width: 400px;" action="php_controllers/registerController.php" method="POST">
         <!-- Camp Nom -->
         <div class="mb-3">

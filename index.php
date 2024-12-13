@@ -1,9 +1,3 @@
-<?php 
-
-  session_start()
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,8 +10,8 @@
 
 <?php 
 
-  include_once('php_partials/menu.php'); 
-
+  include_once('php_partials/menu.php');
+  
 ?>
 
 </body>
