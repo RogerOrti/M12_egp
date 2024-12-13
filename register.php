@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,22 +8,17 @@
     <title>Registre</title>
 </head>
 <body>
-    
+
     <?php 
-
-        include_once('php_partials/menu.php'); 
-
+        include_once('php_partials/menu.php');
     ?>
+
   <div class="container mt-5">
     <h2 class="text-center">Registre</h2>
-
+    
     <?php
-    
       include_once('php_partials/missatges.php');
-    
-    
     ?>
-
 
     <form class="mx-auto" style="max-width: 400px;" action="php_controllers/registerController.php" method="POST">
       <!-- Camp Nom -->
