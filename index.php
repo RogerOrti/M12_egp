@@ -10,9 +10,27 @@
 
 <?php 
 
-  include_once('php_partials/menu.php');
+  include_once 'php_partials/menu.php';
   
 ?>
+
+<?php if (isset($_SERVER['nom'])) { ?>
+
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title"></h1>
+      </div>
+    </div>
+  </div>
+
+<?php } else {?> 
+
+  <div></div>
+
+<?php } ?>
+
+
 
 </body>
 <script src="bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>

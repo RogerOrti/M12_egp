@@ -10,7 +10,7 @@ function errorMessage($e){
           case 1062:
               $mensaje = "Registre duplicat";
           break;
-          case 1062:
+          case 1451:
               $mensaje = "Registre amb elements relacionats";
           break;
           default:
@@ -82,7 +82,6 @@ function register_usuari($nom_usuari, $password){
 }
 
 
-
 function verificar_usuari($nom_usuari, $password){
 
   $conn = openBD();
@@ -105,4 +104,19 @@ function verificar_usuari($nom_usuari, $password){
 
   $conn = null;
 
+}
+function select_projectes(){
+
+  $conn = openBD();
+
+  try {
+    $sentencia_text = "SELECT * FROM projectes WHERE ";
+    $sentencia = $conn->prepare($sentencia_text);
+
+  } catch (\PDOException $e) {
+
+    $_SESSION['error'] = $e->getCode() . ' - ' . $e->getMessage();
+  }
+  
+  $conn = null;
 }
