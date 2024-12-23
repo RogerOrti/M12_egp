@@ -28,10 +28,9 @@
         </li>
       </ul>
       <div class="d-flex">
-        <a href="<?php echo isset($_SESSION['nom']) ? './php_controllers/logoutController.php' : 'login.php'; ?>" 
-        class="btn btn-outline-primary me-3">
-        <?php echo isset($_SESSION['nom']) ? 'Tancar sessió' : 'Iniciar sessió'; ?>
-        </a>
+      <?php if(isset($_SESSION['usuari'])) { ?>
+        <a href="./php_controllers/logoutController.php" class="btn btn-outline-primary me-3">Tancar sessió</a>
+      <?php } ?>
       </div>
     </div>
   </div>

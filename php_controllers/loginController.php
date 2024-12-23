@@ -14,7 +14,6 @@ if(isset($_POST['iniciar'])){
         exit();
     }
 
-    $_SESSION['nom'] = $_POST['nom'];
 
-    header('Location: ../index.php');
+    header('Location: ../projectes.php');
 }

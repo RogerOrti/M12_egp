@@ -42,7 +42,7 @@ function openBD(){
 
     $servername = "localhost";
     $username = "root";
-    $password = "mysql";
+    $password = "";
     
     try {
 
@@ -91,27 +91,53 @@ function verificar_usuari($nom_usuari, $password){
       $sentencia = $conn->prepare($sentencia_text);
       $sentencia->bindParam(':nom', $nom_usuari);
       $sentencia->execute();
+      
       $resultat = $sentencia->fetch(PDO::FETCH_ASSOC);
 
-      if ($resultat && password_verify($password, $resultat['contrasenya'])) {
+      if($resultat){
+
+        if ($resultat && password_verify($password, $resultat['contrasenya'])) {
         
+          $_SESSION['missatge'] = 'Usuari verificat';
+          $_SESSION['usuari'] = [
+            'id' => $resultat['id'],
+            'nom' => $resultat['nom']
+        ];
+
+        return true;
+        }
+        else {
+          return false;
+        }
       }
+
+
 
 
     } catch (PDOException $e) {
 
+      $_SESSION['error'] = $e->getCode() . ' - ' . $e->getMessage();
   }
 
   $conn = null;
-
 }
-function select_projectes(){
+function select_projectes($id_usuari){
 
   $conn = openBD();
 
   try {
-    $sentencia_text = "SELECT * FROM projectes WHERE ";
+    $sentencia_text = "SELECT p.* 
+    FROM projectes p
+    INNER JOIN usuaris_projecte_rol upr ON p.id = upr.id_projectes
+    WHERE upr.id_usuaris = :id_usuari";
+
     $sentencia = $conn->prepare($sentencia_text);
+    $sentencia->bindParam(':id_usuari', $id_usuari);
+    $sentencia->execute();
+
+    $resultat = $sentencia->fetchAll();
+
+    return $resultat;
 
   } catch (\PDOException $e) {
 
