@@ -1,11 +1,6 @@
 <?php
 
     require_once './php_library/bd.php';
-
-
-    $projectes = select_projectes($_SESSION['nom']);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -22,13 +17,6 @@
     include_once 'php_partials/menu.php';
 
 ?>
-
-<?php
-
-    print_r($_SESSION['usuari']);
-
-?>
-
 
 
 </body>

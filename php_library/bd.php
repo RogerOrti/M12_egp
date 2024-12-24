@@ -72,7 +72,7 @@ function register_usuari($nom_usuari, $password){
       $sentencia->bindParam(':contrasenya', $password_xifrada);
       $sentencia->execute();
 
-      $_SESSION['missatge'] = 'Registre afegit corrctament';
+      $_SESSION['mensaje'] = 'Registre afegit corrctament';
     }
     catch (PDOException $e) {
 
@@ -82,45 +82,35 @@ function register_usuari($nom_usuari, $password){
 }
 
 
-function verificar_usuari($nom_usuari, $password){
+function verificar_usuari($nom_usuari, $password) {
 
   $conn = openBD();
-    try {
 
-      $sentencia_text = "SELECT * FROM usuaris WHERE nom_usuari = :nom";
-      $sentencia = $conn->prepare($sentencia_text);
-      $sentencia->bindParam(':nom', $nom_usuari);
-      $sentencia->execute();
-      
-      $resultat = $sentencia->fetch(PDO::FETCH_ASSOC);
+  try {
+    $sentencia_text = "SELECT * FROM usuaris WHERE nom = :nom";
+    $sentencia = $conn->prepare($sentencia_text);
+    $sentencia->bindParam(':nom', $nom_usuari);
+    $sentencia->execute();
+    $resultat = $sentencia->fetch(PDO::FETCH_ASSOC);
 
-      if($resultat){
+    if ($resultat && password_verify($password, $resultat['contrasenya'])) {
 
-        if ($resultat && password_verify($password, $resultat['contrasenya'])) {
-        
-          $_SESSION['missatge'] = 'Usuari verificat';
-          $_SESSION['usuari'] = [
-            'id' => $resultat['id'],
-            'nom' => $resultat['nom']
-        ];
+      return [
+          'id' => $resultat['id'],
+          'nom' => $resultat['nom']
+      ];
+    }
 
-        return true;
-        }
-        else {
-          return false;
-        }
-      }
+  } catch (PDOException $e) {
 
-
-
-
-    } catch (PDOException $e) {
-
-      $_SESSION['error'] = $e->getCode() . ' - ' . $e->getMessage();
+    $_SESSION['error'] = $e->getCode() . ' - ' . $e->getMessage();
   }
 
   $conn = null;
+
+
 }
+
 function select_projectes($id_usuari){
 
   $conn = openBD();
