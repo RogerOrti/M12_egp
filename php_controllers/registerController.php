@@ -17,8 +17,4 @@ if (isset($_POST['registre'])) {
 
         header('Location: ../login.php');
     }
-    else {
-        
-    }
-
 }

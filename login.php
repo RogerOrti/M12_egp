@@ -1,3 +1,7 @@
+<?php 
+  session_start()
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +17,9 @@
     <div class="container mt-5">
         <h2 class="text-center">Inici sessió</h2>
         
+    <?php 
+        include_once('php_partials/missatges.php');  
+    ?>
         <form class="mx-auto" style="max-width: 400px;" action="php_controllers/loginController.php" method="POST">
         <!-- Camp Nom -->
         <div class="mb-3">
