@@ -18,7 +18,11 @@
 
 ?>
 
+<div class="container mt-5 d-flex justify-content-center">
+    <button class="btn btn-primary " id="crear_projectes">Crear projectes</button>
+</div>
 
 </body>
 <script src="bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+<script src="scripts/projectes.js"></script>
 </html>

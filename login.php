@@ -1,7 +1,3 @@
-<?php 
-  session_start()
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,20 +17,15 @@
         include_once('php_partials/missatges.php');  
     ?>
         <form class="mx-auto" style="max-width: 400px;" action="php_controllers/loginController.php" method="POST">
-        <!-- Camp Nom -->
         <div class="mb-3">
             <label for="nom" class="form-label">Nom</label>
             <input type="text" class="form-control" id="nom" name="nom" required>
         </div>
-
-        <!-- Camp Contrasenya -->
         <div class="mb-3">
             <label for="contrasenya" class="form-label">Contrasenya</label>
             <input type="password" class="form-control" id="contrasenya" name="contrasenya" required>
             <span><a href="register.php">No tens compte? Registra't ara!</a></span>
         </div>
-
-        <!-- Botó Envia -->
         <div class="d-grid">
             <button type="submit" class="btn btn-primary" name="iniciar">Iniciar sessió</button>
         </div>
