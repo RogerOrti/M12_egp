@@ -136,3 +136,55 @@ function select_projectes($id_usuari){
   
   $conn = null;
 }
+
+
+function select_rol(){
+
+  $conn = openBD();
+
+  try {
+
+    $sentencia_text = "SELECT * FROM rol";
+    $sentencia = $conn->prepare($sentencia_text);
+    $sentencia->execute();
+    $resultat = $sentencia->fetchAll();
+
+    return $resultat;
+
+  } catch (PDOException $e) {
+    
+    $_SESSION['error'] = $e->getCode() . ' - ' . $e->getMessage();
+  }
+
+  $conn = null;
+
+}
+
+function crear_projectes($nom_projecte){
+
+  $conn = openBD();
+
+  $conn->beginTransaction();
+  try {
+  
+    $sentencia_text = "INSERT INTO projectes (nom) VALUES (:nom)";
+    $sentencia = $conn->prepare($sentencia_text);
+    $sentencia->bindParam(':nom', $nom_projecte);
+    $sentencia->execute();
+  
+    $sentencia_text = "INSERT INTO usuaris_projectes_rol(id_usuaris, id_projectes, id_rol)";
+
+    $conn->commit();
+
+  } catch (PDOException $e) {
+    
+    $conn->rollBack();
+    $_SESSION['error'] = $e->getCode() . ' - ' . $e->getMessage();
+  }
+
+  $conn = null;
+
+}
+
+
+
