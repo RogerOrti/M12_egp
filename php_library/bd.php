@@ -164,6 +164,10 @@ function crear_projectes($nom_projecte){
 
   $conn = openBD();
 
+  $id_usuari = $_SESSION['usuari']['id'];
+  $id_projecte = select_projectes($id_usuari);
+  $id_rol = select_rol();
+  
   $conn->beginTransaction();
   try {
   
@@ -171,8 +175,15 @@ function crear_projectes($nom_projecte){
     $sentencia = $conn->prepare($sentencia_text);
     $sentencia->bindParam(':nom', $nom_projecte);
     $sentencia->execute();
+
+
   
-    $sentencia_text = "INSERT INTO usuaris_projectes_rol(id_usuaris, id_projectes, id_rol)";
+    $sentencia_text = "INSERT INTO usuaris_projectes_rol(id_usuaris, id_projectes, id_rol) VALUES (:id_usuari, :id_projecte, :id_rol)";
+    $sentencia = $conn->prepare($sentencia_text);
+    $sentencia->bindParam(":id_usuari", $id_usuari);
+    $sentencia->bindParam(":id_projecte", $id_projecte);
+    $sentencia->bindParam(":id_rol", $id_rol);
+    $sentencia->execute();
 
     $conn->commit();
 
