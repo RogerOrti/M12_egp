@@ -1,7 +1,7 @@
 <?php           
 session_start();
 
-require_once("../php_library/bd.php");
+require_once "../php_library/bd.php";
 
 if (isset($_POST['iniciar'])) {
 

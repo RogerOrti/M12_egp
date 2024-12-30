@@ -19,7 +19,31 @@
 ?>
 
 <div class="container mt-5 d-flex justify-content-center">
-    <button class="btn btn-primary " id="crear_projectes">Crear projectes</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Nou projecte
+    </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Projecte</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="php_controllers/projectesController.php" method="POST">
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Nom projecte</label>
+                    <input type="text" class="form-control" name="nom_projecte">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name="crear_projectes">Crear projecte</button>
+            </div>
+        </form>
+        </div>
+    </div>
+    </div>
 </div>
 
 </body>
