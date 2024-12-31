@@ -23,6 +23,23 @@
     include_once 'php_partials/missatges.php'
 
 ?>
+<div class="container">
+    <div class="row ">
+        <div class="col-12 col-md-6 col-lg-4 mt-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Projecte 1</h5>
+                    <a href="#" class="btn btn-primary">Accedir projecte</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 
 <div class="container mt-5 d-flex justify-content-center">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
