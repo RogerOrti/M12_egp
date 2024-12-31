@@ -137,51 +137,32 @@ function select_projectes($id_usuari){
   $conn = null;
 }
 
-
-function select_rol(){
-
-  $conn = openBD();
-
-  try {
-
-    $sentencia_text = "SELECT * FROM rol";
-    $sentencia = $conn->prepare($sentencia_text);
-    $sentencia->execute();
-    $resultat = $sentencia->fetchAll();
-
-    return $resultat;
-
-  } catch (PDOException $e) {
-    
-    $_SESSION['error'] = $e->getCode() . ' - ' . $e->getMessage();
-  }
-
-  $conn = null;
-
-}
-
 function crear_projectes($nom_projecte){
 
   $conn = openBD();
 
   $id_usuari = $_SESSION['usuari']['id'];
-  $id_projecte = select_projectes($id_usuari);
-  $id_rol = select_rol();
-  
+
   $conn->beginTransaction();
+  
   try {
   
     $sentencia_text = "INSERT INTO projectes (nom) VALUES (:nom)";
     $sentencia = $conn->prepare($sentencia_text);
     $sentencia->bindParam(':nom', $nom_projecte);
     $sentencia->execute();
+    $id_projecte = $conn->lastInsertId();
 
-
-  
-    $sentencia_text = "INSERT INTO usuaris_projectes_rol(id_usuaris, id_projectes, id_rol) VALUES (:id_usuari, :id_projecte, :id_rol)";
+    $sentencia_text = "SELECT id FROM rol WHERE rol = 'admin'";
     $sentencia = $conn->prepare($sentencia_text);
+    $sentencia->execute();
+    //Ens retorna una unica columna. Podria fer servir fetch i agafar l'id del array
+    $id_rol = $sentencia->fetchColumn();
+
+    $sentencia_text = "INSERT INTO usuaris_projecte_rol (id_usuaris, id_projectes, id_rol) VALUES (:id_usuari, :id_projecte, :id_rol)";
+    $sentencia = $conn ->prepare($sentencia_text);
     $sentencia->bindParam(":id_usuari", $id_usuari);
-    $sentencia->bindParam(":id_projecte", $id_projecte);
+    $sentencia->bindParam("id_projecte", $id_projecte);
     $sentencia->bindParam(":id_rol", $id_rol);
     $sentencia->execute();
 

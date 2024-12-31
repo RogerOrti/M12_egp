@@ -16,7 +16,7 @@ if(isset($_POST['crear_projectes'])){
         exit();
     }
 
-    header("Location: ../projectes");
+    header("Location: ../projectes.php");
 
 }
 
