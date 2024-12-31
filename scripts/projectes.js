@@ -1,8 +1,11 @@
 window.addEventListener("load", () =>{
-    fetch()
+    fetch('api/projectes.php')
     .then(function(resposta){
         return resposta.json();
     })
+    .then(function (projectes){
+        
 
+    })
 
 });
