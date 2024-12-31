@@ -18,6 +18,12 @@
 
 ?>
 
+<?php
+
+    include_once 'php_partials/missatges.php'
+
+?>
+
 <div class="container mt-5 d-flex justify-content-center">
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Nou projecte

@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php 
-        include_once('php_partials/menu.php');  
+        include_once 'php_partials/menu.php';  
     ?>
     <div class="container mt-5">
         <h2 class="text-center">Inici sessió</h2>
