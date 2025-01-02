@@ -2,7 +2,6 @@
 
 require_once "../php_library/bd.php";
 
-
 header("Content-Type: application/json");
 
 $id_usuari = $_SESSION['usuari']['id'];
@@ -15,12 +14,14 @@ WHERE upr.id_usuaris = :id_usuari";
 
 try {
     $sentencia = $conn->prepare($sentencia_text);
-    $sentencia->bindParam(':id_usuari', $id_usuari);
+    $sentencia->bindParam(':id_usuari', $id_usuari, PDO::PARAM_INT);
     $sentencia->execute();
-    $resultat = $sentencia->fetchAll();
+    $resultat = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+    echo json_encode($resultat);
 
 } catch (PDOException $e) {
-    $_SESSION['error'] = "Error: " . $e->getMessage();
+    echo json_encode(['error' => 'Error a la base de dades: ' . $e->getMessage()]);
 }
 
-echo json_encode($resultat);
+$conn = null;
