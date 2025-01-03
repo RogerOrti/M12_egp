@@ -14,9 +14,7 @@ if (isset($_POST['iniciar'])) {
         exit();
     }
 
-
     $_SESSION['usuari'] = $usuari;
-
 
     header('Location: ../projectes.php');
     exit();
