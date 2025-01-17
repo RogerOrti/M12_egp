@@ -3,7 +3,7 @@ window.addEventListener("load", () => {
         .then((resposta) => resposta.json())
         .then((projectes) => {
             const container_projectes = document.getElementById('container_projectes');
-
+            container_projectes.innerHTML = "Hola";
             const row = document.createElement('div');
             row.className = 'row';
 
