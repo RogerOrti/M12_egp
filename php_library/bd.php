@@ -42,7 +42,7 @@ function openBD(){
 
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "mysql";
     
     try {
 
