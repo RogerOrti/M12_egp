@@ -1,9 +1,11 @@
 window.addEventListener("load", () => {
-    fetch('../api/projectes.php')
-        .then((resposta) => resposta.json())
+    fetch('./api/projectes.php')
+        .then( function(resposta){
+           return resposta.json()
+        })
         .then((projectes) => {
+
             const container_projectes = document.getElementById('container_projectes');
-            container_projectes.innerHTML = "Hola";
             const row = document.createElement('div');
             row.className = 'row';
 

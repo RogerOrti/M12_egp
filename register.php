@@ -20,7 +20,7 @@
       include_once('php_partials/missatges.php');
     ?>
 
-    <form class="mx-auto" style="max-width: 400px;" action="php_controllers/registerController.php" method="POST">
+    <form class="mx-auto" style="max-width: 400px;" action="php_controllers/UsuariController.php" method="POST">
       <!-- Camp Nom -->
       <div class="mb-3">
         <label for="nom" class="form-label">Nom</label>

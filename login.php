@@ -16,7 +16,7 @@
     <?php 
         include_once('php_partials/missatges.php');  
     ?>
-        <form class="mx-auto" style="max-width: 400px;" action="php_controllers/loginController.php" method="POST">
+        <form class="mx-auto" style="max-width: 400px;" action="php_controllers/UsuariController.php" method="POST">
         <div class="mb-3">
             <label for="nom" class="form-label">Nom</label>
             <input type="text" class="form-control" id="nom" name="nom" required>

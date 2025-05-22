@@ -1,10 +1,13 @@
 <?php
 
-require_once "../php_library/bd.php";
+// session_start();
+
+require_once '../php_library/bd.php';
 
 header("Content-Type: application/json");
 
 $id_usuari = $_SESSION['usuari']['id'];
+
 $conn = openBD();
 
 $sentencia_text = "SELECT p.id, p.nom 

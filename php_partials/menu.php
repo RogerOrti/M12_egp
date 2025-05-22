@@ -26,7 +26,7 @@
       </ul>
       <div class="d-flex">
       <?php if(isset($_SESSION['usuari'])) { ?>
-        <form action="./php_controllers/loginController.php" method="POST">
+        <form action="./php_controllers/UsuariController.php" method="POST">
           <button type="submit" class="btn btn-outline-primary me-3" name="logout">Tancar sessió</a>
         </form>
       <?php } ?>
