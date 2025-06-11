@@ -12,6 +12,7 @@
     ?>
     <div class="container mt-5">
         <h2 class="text-center">Inici sessió</h2>
+        <p>Prova de deploy</p>   
         
     <?php 
         include_once('php_partials/missatges.php');  
