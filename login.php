@@ -13,7 +13,8 @@
     <div class="container mt-5">
         <h2 class="text-center">Inici sessió</h2>
         <p>Prova de deploy</p>   
-        <p>Prova de deploy 2</p>   
+        <p>Prova de deploy 2</p>
+        <h1>PROVA hola que tal</h1>   
         
     <?php 
         include_once('php_partials/missatges.php');  
